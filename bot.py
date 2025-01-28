@@ -30,7 +30,14 @@ def start_web_server():
     return app
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.create_task(run_bot())
+    async def main():
+        app = start_web_server()
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, host='0.0.0.0', port=3000)
+        await site.start()
 
-    web.run_app(start_web_server(), host='0.0.0.0', port=3000)
+        # Запускаем бота
+        await run_bot()
+
+    asyncio.run(main())
