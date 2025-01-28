@@ -10,3 +10,5 @@
 - `middlewares.py` — middleware modules for data processing.
 - `states.py` — FSM (finite state machine) states for managing user scenarios.
 - `utils.py` — utilities and helper code.
+
+![Gif](images/output9.gif)
